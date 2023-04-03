@@ -25,7 +25,7 @@ const db = process.env.DATABASE_URL
 mongoose.set('strictQuery', false)
 mongoose.connect(db).then(() => {
     console.log('connection successful');
-}).catch((err) => console.log('Error'))
+}).catch((err) => console.log('Error connecting to database'))
 mongoose.Promise = global.Promise;
 
 
