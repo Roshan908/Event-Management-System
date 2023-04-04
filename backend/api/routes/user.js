@@ -1,38 +1,49 @@
 const express = require("express");
 const router = express.Router();
+const bcrypt=require('bcrypt')
 const jwt = require('../../middleware/jwtAssign');
-const User = require('../../models/user')
+const User = require('../../models/user');
+const { default: mongoose } = require("mongoose");
 
-router.post("/signUp", (req, res, next) => {
-    User.find({ email: req.body.email }).exec().then(user => {
-        if (user.length<1 && req.body.password === req.body.confirmPassword) {
-            let newUser = new User();
-            newUser.email = req.body.email;
-            newUser.name = req.body.name;
-            newUser.phone = req.body.phone;
-            newUser.setPassword(req.body.password);
-            newUser
-                .save()
-                .then(() => {
-                    let token = jwt.generateJWT({email:req.body.email, phone:req.body.phone}); // Generate the token, so that user can be validate on later process
-                    res.cookie('token', token);
-                    res.status(201).json({ "message": "account created" })
-                })
-                .catch((err) => {
-                    if(err.code===11000)
-                        res.status(400).json({ "message": "Already exist", "value": err['keyValue']});
-                    else
-                        res.status(400).json({ "message": err.message});
-                });
+router.post('/register',(req,res,next)=>{
+    User.find({email:req.body.email})
+    .exec()
+    .then((result)=>{
+        if(result.length>1)
+        {
+            res.status(200).json({
+                message:'Email already exists'
+            })
         }
-        else {
-            res.status(400).json({ "message": "Something is wrong" })
+        else
+        {
+            bcrypt.hash(req.body.password,12,(err,hash)=>{
+                if(err)
+                {
+                    return res.status(500).json({
+                        error:err
+                    })
+                }
+                else{
+                    const user=new User({
+                        _id: new mongoose.Types.ObjectId(),
+                        name:req.body.name,
+                        email:req.body.email,
+                        password:req.body.password,
+                    });
+                    user
+                    .save()
+                    .then((result)=>res.status(201).json({
+                        message:'User Registered'
+                    }))
+                    .catch(err=>res.status(500).json({
+                        error:err
+                    }))
+                }
+            })
         }
-    }).catch(err=>{
-        res.status(500).json({ message: err.message });
-    });
-
-});
+    })
+})
 
 router.post("/signIn", (req, res, next) => {
     // console.log(req.body)
