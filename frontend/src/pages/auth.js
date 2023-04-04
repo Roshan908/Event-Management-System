@@ -3,14 +3,23 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 const Auth = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
-    const [acceptedTerms, setAcceptedTerms] = useState(false);
+    const [formData, setFormData] = useState({
+        name:'',
+        email: '',
+        password: '',
+    });
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setFormData((prevState) => ({
+            ...prevState,
+            [name]: value,
+        }));
+    };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Handle form submission
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(formData,"asdsdsdsdsd");
+        // submit form data to server
     };
 
     return (
@@ -28,6 +37,24 @@ const Auth = () => {
                                     <form onSubmit={handleSubmit}>
                                         <div className="mb-3">
                                             <label
+                                                htmlFor="name"
+                                                className="form-label text-gray-900"
+                                            >
+                                                Name
+                                            </label>
+                                            <input
+                                                // type="string"
+                                                className="form-control rounded-lg"
+                                                id="name"
+                                                name="name"
+                                                // value={formData.email}
+                                                onChange={handleInputChange}
+                                                placeholder="name"
+                                                required
+                                            />
+                                        </div>
+                                        <div className="mb-3">
+                                            <label
                                                 htmlFor="email"
                                                 className="form-label text-gray-900"
                                             >
@@ -37,9 +64,10 @@ const Auth = () => {
                                                 type="email"
                                                 className="form-control rounded-lg"
                                                 id="email"
-                                                value={email}
-                                                onChange={(e) => setEmail(e.target.value)}
-                                                placeholder="name@company.com"
+                                                value={formData.email}
+                                                name="email"
+                                                onChange={handleInputChange}
+                                                placeholder="name@abc.com"
                                                 required
                                             />
                                         </div>
@@ -54,25 +82,9 @@ const Auth = () => {
                                                 type="password"
                                                 className="form-control rounded-lg"
                                                 id="password"
-                                                value={password}
-                                                onChange={(e) => setPassword(e.target.value)}
-                                                placeholder="••••••••"
-                                                required
-                                            />
-                                        </div>
-                                        <div className="mb-3">
-                                            <label
-                                                htmlFor="confirm-password"
-                                                className="form-label text-gray-900"
-                                            >
-                                                Confirm password
-                                            </label>
-                                            <input
-                                                type="password"
-                                                className="form-control rounded-lg"
-                                                id="confirm-password"
-                                                value={confirmPassword}
-                                                onChange={(e) => setConfirmPassword(e.target.value)}
+                                                value={formData.password}
+                                                name="password"
+                                                onChange={handleInputChange}
                                                 placeholder="••••••••"
                                                 required
                                             />
@@ -82,8 +94,8 @@ const Auth = () => {
                                                 type="checkbox"
                                                 className="form-check-input"
                                                 id="terms"
-                                                checked={acceptedTerms}
-                                                onChange={(e) => setAcceptedTerms(e.target.checked)}
+                                                // checked={formData.acceptedTerms}
+                                                // onChange={handleInputChange}
                                                 required
                                             />
                                             <label
