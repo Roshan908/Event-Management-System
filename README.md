@@ -5,7 +5,7 @@ This is event booking website with admin panel to manage and register events.
   ## Technlogies used:
   * React js
   * material ui
-  * Tailwind
+  * Bootstrap
 
 # Backend
  ## Technlogies used:
