@@ -17,7 +17,7 @@ This is event booking website with admin panel to manage and register events.
 
  # Steps to use it:
  
- 1. Clone the repo (git clone git@github.com:samiramrullah/Event-Management-System.git) <br>
+ 1. Clone the repo (git clone git@github.com:Roshan/Event-Management-System.git) <br>
     ###  cd .\backend <br>
       * npm install <br>
       * npm start (It will start the backend server) <br>
