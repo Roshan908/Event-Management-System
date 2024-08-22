@@ -1,15 +1,21 @@
 const express = require('express');
 const app = express();
 
-//Handeling cors error
+const allowedOrigins = ['http://192.168.16.184:3000', 'http://localhost:3000'];
+
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*')  //wildcard
-    res.header('Access-Control-Allow-Headers', '*');
+    const origin = req.headers.origin;
+    if (allowedOrigins.includes(origin)) {
+        res.header('Access-Control-Allow-Origin', origin);
+    }
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH');
     if (req.method === 'OPTIONS') {
-        res.header('Access-Control-Methods', 'POST', 'GET', 'PATCH', 'DELETE')
         return res.status(200).json({});
     }
     next();
-})
+});
 
-module.exports = app;
+// Your other middleware and routes here
+
+module.exports = app;

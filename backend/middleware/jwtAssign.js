@@ -1,22 +1,11 @@
-require('dotenv').config();
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
+require('dotenv').config(); // Load environment variables
 
-module.exports = {
-  generateJWT: (details) => {
-    return jwt.sign(details, process.env.SECRET_KEY);
-  },
-  verifyJWT: (token) => {
-    return jwt.verify(token, process.env.SECRET_KEY, (err, decoded)=>{
-        if(!err) 
-        {
-            return true;
-        }
-        else return false;
-    })
-  },
-  getDecodedValue: (token)=>{
-    return jwt.verify(token, process.env.SECRET_KEY, (err, decoded)=>{
-        if(!err) return decoded
-    })
-  }
+const secretKey = process.env.JWT_SECRET;
+
+module.exports.generateJWT = (payload) => {
+    if (!secretKey) {
+        throw new Error("JWT secret key is missing!");
+    }
+    return jwt.sign(payload, secretKey, { expiresIn: "1h" });
 };

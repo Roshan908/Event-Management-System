@@ -8,7 +8,7 @@ const Artists = () => {
                     <div class="row justify-content-center">
 
                         <div class="col-12 text-center">
-                            <h2 class="mb-4">Gallary</h2>
+                            <h2 class="mb-4">Gallery</h2>
                         </div>
 
                         <div class="col-lg-5 col-12">
@@ -17,29 +17,7 @@ const Artists = () => {
                                     <img src="images/artists/joecalih-UmTZqmMvQcw-unsplash.jpg" class="artists-image img-fluid" alt='img' />
                                 </div>
 
-                                <div class="artists-hover">
-                                    <p>
-                                        <strong>Event Name:</strong>
-                                        Lord Butwal
-                                    </p>
-
-                                    <p>
-                                        <strong>Location:</strong>
-                                        Butwal
-                                    </p>
-
-                                    <p>
-                                        <strong>Special Guest:</strong>
-                                        Samir
-                                    </p>
-
-                                    <hr />
-
-                                    <p class="mb-0">
-                                        <strong>Youtube Channel:</strong>
-                                        <a href="1">Madona Official</a>
-                                    </p>
-                                </div>
+                              
                             </div>
                         </div>
 
@@ -49,57 +27,13 @@ const Artists = () => {
                                     <img src="images/artists/abstral-official-bdlMO9z5yco-unsplash.jpg" class="artists-image img-fluid" alt='img' />
                                 </div>
 
-                                <div class="artists-hover">
-                                    <p>
-                                        <strong>Event Name:</strong>
-                                        Lord Butwal
-                                    </p>
-
-                                    <p>
-                                        <strong>Location:</strong>
-                                        Butwal
-                                    </p>
-
-                                    <p>
-                                        <strong>Special Guest:</strong>
-                                        Samir
-                                    </p>
-
-                                    <hr />
-
-                                    <p class="mb-0">
-                                        <strong>Youtube Channel:</strong>
-                                        <a href="1">Madona Official</a>
-                                    </p>
-                                </div>
+                               
                             </div>
 
                             <div class="artists-thumb">
                                 <img src="images/artists/soundtrap-rAT6FJ6wltE-unsplash.jpg" class="artists-image img-fluid" alt='img' />
 
-                                <div class="artists-hover">
-                                    <p>
-                                        <strong>Event Name:</strong>
-                                        Lord Butwal
-                                    </p>
-
-                                    <p>
-                                        <strong>Location:</strong>
-                                        Butwal
-                                    </p>
-
-                                    <p>
-                                        <strong>Special Guest:</strong>
-                                        Samir
-                                    </p>
-
-                                    <hr />
-
-                                    <p class="mb-0">
-                                        <strong>Youtube Channel:</strong>
-                                        <a href="1">Madona Official</a>
-                                    </p>
-                                </div>
+                               
                             </div>
                         </div>
 

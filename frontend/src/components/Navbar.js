@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import logo from "../assets/logo-footer.jpeg"
+import { Link } from 'react-router-dom'
 import '../style.css'
 const Navbar = () => {
     const [offset, setOffset] = useState(0);
@@ -17,7 +18,7 @@ const Navbar = () => {
                 <div class="container" >
                     <a class="navbar-brand text-white " href="index.html">
                         {/* Lord Butwal */}
-                        <img src={logo} alt="" style={{ height: '6rem', width: '10rem' }} />
+                        <h1>EventEase</h1>
                     </a>
                     <a href="ticket.html" class="btn custom-btn d-lg-none ms-auto me-4">Buy Ticket</a>
 
@@ -35,16 +36,17 @@ const Navbar = () => {
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link click-scroll" href="#section_3">Gallary</a>
+                                <a class="nav-link click-scroll" href="#section_3">Gallery</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link click-scroll" href="#section_4">Events</a>
+                                <a className="nav-link click-scroll" href="#section_4">Events</a>
                             </li>
 
                         </ul>
 
                         <a href="ticket.html" class="btn custom-btn d-lg-block d-none">Buy Ticket</a>
+                        <Link to={`/signup`} className='btn custom-btn d-lg-block d-none mx-4'>signup</Link>
                     </div>
                 </div>
             </nav>

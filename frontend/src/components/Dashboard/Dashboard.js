@@ -24,7 +24,7 @@ import UpcomingEvents from './UpcomingEvents';
 import PastEvents from './PastEvents';
 import OngoingEvent from './OngoingEvent';
 import EventDetails from '../../utils/Cards/EventDetail';
-import logo from '../../assets/logo-footer.jpeg'
+
 
 const drawerWidth = 240;
 
@@ -42,6 +42,7 @@ function ResponsiveDrawer(props) {
       <Toolbar />
       <Divider />
       <List>
+        <ListItem><Link to={`/`}>&#8592; Go Home</Link></ListItem>
         {['Add Event', 'OnGoing Event', 'Upcoming Event', 'Past Event'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <Link to={`/dashboard/${text.toLowerCase().replaceAll(" ", "")}`} style={{ textDecoration: 'none', color: 'black' }}>
@@ -56,18 +57,7 @@ function ResponsiveDrawer(props) {
         ))}
       </List>
       <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+    
     </div>
   );
 
@@ -94,7 +84,7 @@ function ResponsiveDrawer(props) {
             <MenuIcon />
           </IconButton>
           <Typography noWrap component="div">
-            <img src={logo} alt='logo' style={{ width: '50px', height: '50px' }}></img>
+            {/* <img src={logo} alt='logo' style={{ width: '50px', height: '50px' }}></img> */}
           </Typography>
         </Toolbar>
       </AppBar>

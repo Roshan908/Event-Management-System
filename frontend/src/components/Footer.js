@@ -21,7 +21,7 @@ const Footer = () => {
                     <div class="col-xl-6 col-lg-6 mb-50">
                         <div class="footer-widget">
                             <div class="footer-logo">
-                                <a href="index.html"><img src={footerlogo} class="img-fluid" alt="logo"/></a>
+                                {/* <a href="index.html"><img src={footerlogo} class="img-fluid" alt="logo"/></a> */}
                             </div>
                         
                         </div>
@@ -29,9 +29,14 @@ const Footer = () => {
                   <div class="col-xl-6 col-lg-6 mb-50">
                   <div class="footer-social-icon">
                                 <span>Follow us</span>
-                                <a href="1"><img src={instalogo} alt='ghj' style={{height:'50px', width:'50px'}}></img></a>
-                                {/* <a href="1"><i class="fab fa-facebook-f facebook-bg"></i></a> */}
-                                <a href="1"><img src={fablogo} alt='ghj' style={{height:'50px', width:'50px'}}></img></a>
+                                <a href="https://www.instagram.com/youreventeaseprofile" target="_blank" rel="noopener noreferrer">
+    <img src={instalogo} alt="Instagram" style={{ height: '50px', width: '50px' }} />
+</a>
+
+<a href="https://www.facebook.com/youreventeaseprofile" target="_blank" rel="noopener noreferrer">
+    <img src={fablogo} alt="Facebook" style={{ height: '50px', width: '50px' }} />
+</a>
+
                             </div>
                   </div>
                 </div>
@@ -43,7 +48,7 @@ const Footer = () => {
                         <div class="single-cta"><img src={locationImg} alt='ghj' style={{height:'50px' , width:'50px'}}></img><i class="fas fa-map-marker-alt"></i>
                             <div class="cta-text">
                                 <h4>Find us</h4>
-                                <span>1010 Avenue, sw 12355, Butwal</span>
+                                <span>Bhubaneswar, Odisha, India</span>
                             </div>
                         </div>
                     </div>

@@ -243,24 +243,31 @@ router.patch('/:id', (req, res, next) => {
     }
 })
 
-router.delete('/:id', (req, res, next) => {
+router.delete('/:id', async (req, res) => {
     try {
-        eventSchema.findByIdAndRemove(req.params.id, (err, doc) => {
-            if (!err) {
-                res.status(401).json({
-                    message: "Successfully removed"
-                })
-            } else {
-                res.status(500).json({
-                    message: "Invalid Credentials"
-                })
-            }
-        })
+        console.log(`Attempting to delete event with ID: ${req.params.id}`);
+        const deletedEvent = await eventSchema.findByIdAndDelete(req.params.id);
+
+        if (deletedEvent) {
+            console.log('Event deleted successfully');
+            res.status(200).json({
+                message: "Successfully removed"
+            });
+        } else {
+            console.log('Event not found');
+            res.status(404).json({
+                message: "Event not found"
+            });
+        }
     } catch (error) {
-        res.status(404).status({
-            message: "Not Found"
-        })
+        console.error('Error while deleting event:', error);
+        res.status(500).json({
+            message: "An error occurred while deleting the event",
+            error: error.message
+        });
     }
-})
+});
+
+
 
 module.exports = router;

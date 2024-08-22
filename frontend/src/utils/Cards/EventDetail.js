@@ -9,6 +9,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import { useNavigate, Link } from 'react-router-dom';
 const EventDetails = () => {
     const [eventDetails, setEventDetails] = useState();
     const { id } = useParams()
@@ -19,13 +20,33 @@ const EventDetails = () => {
             .catch(err => console.log(err))
     }, [id])
     console.log(eventDetails, "hhhhhhhhhhhhhhhhhhhhh");
+    const correctedImagePath = eventDetails?.eventImageUrl.replace(/\\/g, '/');
+    console.log(correctedImagePath)
+    const navigate = useNavigate();
+    const handleDelete = async (id) => {
+        const url = `http://localhost:5000/event/${id}`;
+
+        try {
+            const response = await fetch(url, {
+                method: 'DELETE',
+            });
+            if (response.ok) {
+                alert('Event deleted successfully');
+                navigate(-1);
+            } else {
+                alert('Failed to delete the event');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
     return (
         <Card sx={{ maxWidth: 800 }}>
             <CardMedia
                 component="img"
                 alt="green iguana"
                 height="450"
-                image="https://media-cldnry.s-nbcnews.com/image/upload/newscms/2021_22/1725706/katy-perry-kb-main-210601.jpg"
+                image={`http://localhost:5000/${correctedImagePath}`}
             />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
@@ -136,8 +157,8 @@ const EventDetails = () => {
                 )}
             </CardContent>
             <CardActions>
-                <Button size="small">Edit</Button>
-                <Button size="small">Delete</Button>
+                <Link to={`/event/${id}/edit`}><Button size="small">Edit</Button></Link>
+                <Button onClick={()=>handleDelete(id)}>Delete</Button>
             </CardActions>
         </Card>
     );

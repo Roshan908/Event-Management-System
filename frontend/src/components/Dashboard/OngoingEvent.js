@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import Eventcard from '../../utils/Cards/Eventcard';
+import { Link } from 'react-router-dom';
 
 const OngoingEvent = () => {
     const [allOngoingEvents, setAllOngoingEvents] = useState();
@@ -13,6 +14,7 @@ const OngoingEvent = () => {
     if (allOngoingEvents?.length > 0) {
         return (
             <div class="container">
+                <Link to={-1}>&#8592; Go Back</Link>
                 <h1 class="text-center" >Ongoing Events</h1>
                 <hr class="hr hr-blurry" />
                 <div class='row'>

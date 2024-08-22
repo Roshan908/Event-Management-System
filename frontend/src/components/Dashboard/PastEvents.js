@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import Eventcard from '../../utils/Cards/Eventcard';
+import { Link } from 'react-router-dom';
 
 const PastEvents = () => {
     const [allPastEvents, setAllPastEvents] = useState();
@@ -12,7 +13,8 @@ const PastEvents = () => {
     if (allPastEvents?.length > 0) {
         return (
             <div class="container">
-                <h1 class="text-center" >Ongoing Events</h1>
+                <Link to={-1}>&#8592; Go Back</Link>
+                <h1 class="text-center" >Past Events</h1>
                 <hr class="hr hr-blurry" />
                 <div class='row'>
                     {allPastEvents?.map(itm => (

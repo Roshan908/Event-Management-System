@@ -3,8 +3,12 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import axios from 'axios'
 import SuccessModal from "../utils/modal/SuccessModal";
+import { Link, useNavigate } from "react-router-dom";
+
+
 
 const Auth = () => {
+    const navigate = useNavigate();
     const [showSuccessModal, setShowSuccessModal] = useState(false)
     const [formData, setFormData] = useState({
         name: '',
@@ -22,22 +26,30 @@ const Auth = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         axios.post(`${process.env.REACT_APP_API_KEY}user/register`, formData)
-            .then((result) => setShowSuccessModal(true))
-            .catch(err => console.log(err))
+            .then((result) => {
+                setShowSuccessModal(true);
+                alert('Account Created Successfully')
+                navigate('/');
+            })
+            .catch(err => console.log(err));
     };
+    
     return (
         <>
-            <Navbar />
+            {/* <Navbar /> */}
             {showSuccessModal === true ? (
                 <SuccessModal setShowSuccessModal={setShowSuccessModal} showSuccessModal={showSuccessModal} />
             ) : (
                 <section className="bg-gray-50" style={{ marginTop: '8rem' }}>
                     <div className="container py-5">
+                    <Link to={-1}>&#8592; Go Back</Link>
                         <div className="row justify-content-center">
                             <div className="col-lg-5">
                                 <div className="card shadow-sm border-0 rounded-lg">
                                     <div className="card-body p-4 p-sm-5">
+                                    
                                         <h1 className="h2 mb-4 fw-bold text-gray-900 text-center">
+                                            
                                             Create an account
                                         </h1>
                                         <form onSubmit={handleSubmit}>
@@ -127,9 +139,7 @@ const Auth = () => {
                                             </button>
                                             <p className="mt-3 text-center">
                                                 Already have an account?{" "}
-                                                <a href="1" className="text-primary">
-                                                    Login here
-                                                </a>
+                                               <Link to={'/login'}>Login</Link>
                                             </p>
                                         </form>
                                     </div>

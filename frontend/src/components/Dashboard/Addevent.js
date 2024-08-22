@@ -21,17 +21,17 @@ import axios from 'axios';
 const Addevent = () => {
   const [eventName, setEventName] = useState("");
   const [location, setLocation] = useState("");
-  const [eventDate, setEventDate] = useState();
+  const [eventDate, setEventDate] = useState("");
   const [eventImage, setEventImage] = useState(null);
-  const [vvipPrice, setVvipPrice] = useState();
-  const [vvipMaxSeat, setVvipMaxSeat] = useState();
-  const [leftWingPrice, setLeftWingPrice] = useState();
-  const [leftWingMaxSeat, setLeftMaxSeat] = useState();
-  const [rightWingPrice, setRightWingPrice] = useState();
-  const [rightWingMaxSeat, setRightWingMaxSeat] = useState();
+  const [vvipPrice, setVvipPrice] = useState("");
+  const [vvipMaxSeat, setVvipMaxSeat] = useState("");
+  const [leftWingPrice, setLeftWingPrice] = useState("");
+  const [leftWingMaxSeat, setLeftMaxSeat] = useState("");
+  const [rightWingPrice, setRightWingPrice] = useState("");
+  const [rightWingMaxSeat, setRightWingMaxSeat] = useState("");
   const [isStanding, setIsStanding] = useState(true);
-  const [standingPrice, setStandingPrice] = useState();
-  const [eventDetails, setEventDetails] = useState();
+  const [standingPrice, setStandingPrice] = useState("");
+  const [eventDetails, setEventDetails] = useState("");
 
   const handleChange = (newValue) => {
     setEventDate(newValue);

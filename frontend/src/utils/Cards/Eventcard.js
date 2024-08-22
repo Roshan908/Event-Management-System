@@ -13,12 +13,34 @@ const Eventcard = ({ location, date, img, eventName, id, isStanding }) => {
     console.log('====================================');
     console.log(isStanding);
     console.log('====================================');
+    console.log(img)
+    const correctedImagePath = img.replace(/\\/g, '/');
+    console.log(correctedImagePath)
+    const handleDelete = async (id) => {
+        const url = `http://localhost:5000/event/${id}`;
+
+        try {
+            const response = await fetch(url, {
+                method: 'DELETE',
+            });
+            if (response.ok) {
+                alert('Event deleted successfully');
+                window.location.reload();
+            } else {
+                alert('Failed to delete the event');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
     return (
+       
         <Card sx={{ maxWidth: 500 }}>
             <CardMedia
                 sx={{ height: 300 }}
-                image="https://media-cldnry.s-nbcnews.com/image/upload/newscms/2021_22/1725706/katy-perry-kb-main-210601.jpg"
-                title="Ketty Perry"
+                // image={`/backend/${img}`}
+                 image={`http://localhost:5000/${correctedImagePath}`}
+                title=""
             />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
@@ -67,7 +89,7 @@ const Eventcard = ({ location, date, img, eventName, id, isStanding }) => {
                         </Link>
                     </div>
                     <div class="col" style={{ width: '50%', textAlign: 'center' }}>
-                        <Button>Delete</Button>
+                       <Button onClick={()=>handleDelete(id)}>Delete</Button>
                     </div>
                 </div>
             </CardActions>
